@@ -34,11 +34,12 @@ architecture behaviour of aee_rom_wrapper is
 
 begin
 
-	rom: entity work.aee_rom
+	rom: entity work.instruction_rom
 		port map(
 			clka => clk,
 			addra => wb_adr_in(log2(MEMORY_SIZE) - 1 downto 2),
-			douta => read_data
+			doa => read_data,
+			rsta => reset
 		);
 
 	data_mask <= (31 downto 24 => wb_sel_in(3), 23 downto 16 => wb_sel_in(2),

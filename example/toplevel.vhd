@@ -135,7 +135,7 @@ architecture behaviour of toplevel is
 	signal error_ack_out : std_logic;
 
 	-- AEE ROM signals:
-	signal aee_rom_adr_in  : std_logic_vector(13 downto 0);
+	signal aee_rom_adr_in  : std_logic_vector(12 downto 0);
 	signal aee_rom_dat_out : std_logic_vector(31 downto 0);
 	signal aee_rom_cyc_in  : std_logic;
 	signal aee_rom_stb_in  : std_logic;
@@ -291,13 +291,13 @@ begin
 			system_clk_locked => system_clk_locked
 		);
 
-	clkgen: entity work.clock_generator
+	clkgen: entity work.clock
 		port map(
-			clk => clk,
-			resetn => reset_n,
-			system_clk => system_clk,
-			timer_clk => timer_clk,
-			locked => system_clk_locked
+			refclk => clk,
+			reset => reset_n,
+			clk0_out => system_clk,
+			clk1_out => timer_clk,
+			extlock => system_clk_locked
 		);
 
 	processor: entity work.pp_potato
@@ -459,7 +459,7 @@ begin
 
 	aee_rom: entity work.aee_rom_wrapper
 		generic map(
-			MEMORY_SIZE => 16384
+			MEMORY_SIZE => 8192
 		) port map(
 			clk => system_clk,
 			reset => reset,
@@ -477,7 +477,7 @@ begin
 
 	aee_ram: entity work.pp_soc_memory
 		generic map(
-			MEMORY_SIZE => 16384
+			MEMORY_SIZE => 4096
 		) port map(
 			clk => system_clk,
 			reset => reset,
@@ -499,7 +499,7 @@ begin
 
 	main_memory: entity work.pp_soc_memory
 		generic map(
-			MEMORY_SIZE => 131072
+			MEMORY_SIZE => 4096
 		) port map(
 			clk => system_clk,
 			reset => reset,
