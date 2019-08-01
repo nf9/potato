@@ -45,8 +45,9 @@
             <File>soc/pp_soc_uart.vhd</File>
             <File>al_ip/bram.vhd</File>
             <File>al_ip/clock.vhd</File>
+            <File>al_ip/pp_fifo_al.vhd</File>
         </VHDL>
-        <ADC_FILE/>
+        <ADC_FILE>constraint/io.adc</ADC_FILE>
         <SDC_FILE/>
         <CWC_FILE/>
     </Source_Files>
@@ -59,8 +60,8 @@
         <EG4X/>
     </Device_Settings>
     <Project_Settings>
-        <Step_Last_Change>2019-07-31 00:59:29</Step_Last_Change>
-        <Current_Step>0</Current_Step>
+        <Step_Last_Change>2019-08-01 23:32:11</Step_Last_Change>
+        <Current_Step>10</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
 </Project>

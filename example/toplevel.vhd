@@ -143,7 +143,7 @@ architecture behaviour of toplevel is
 	signal aee_rom_ack_out : std_logic;
 
 	-- AEE RAM signals:
-	signal aee_ram_adr_in  : std_logic_vector(13 downto 0);
+	signal aee_ram_adr_in  : std_logic_vector(12 downto 0);
 	signal aee_ram_dat_in  : std_logic_vector(31 downto 0);
 	signal aee_ram_dat_out : std_logic_vector(31 downto 0);
 	signal aee_ram_cyc_in  : std_logic;
@@ -153,7 +153,7 @@ architecture behaviour of toplevel is
 	signal aee_ram_ack_out : std_logic;
 
 	-- Main memory signals:
-	signal main_memory_adr_in  : std_logic_vector(16 downto 0);
+	signal main_memory_adr_in  : std_logic_vector(12 downto 0);
 	signal main_memory_dat_in  : std_logic_vector(31 downto 0);
 	signal main_memory_dat_out : std_logic_vector(31 downto 0);
 	signal main_memory_cyc_in  : std_logic;
@@ -477,7 +477,7 @@ begin
 
 	aee_ram: entity work.pp_soc_memory
 		generic map(
-			MEMORY_SIZE => 4096
+			MEMORY_SIZE => 8192
 		) port map(
 			clk => system_clk,
 			reset => reset,
@@ -499,7 +499,7 @@ begin
 
 	main_memory: entity work.pp_soc_memory
 		generic map(
-			MEMORY_SIZE => 4096
+			MEMORY_SIZE => 8192
 		) port map(
 			clk => system_clk,
 			reset => reset,

@@ -36,7 +36,7 @@ use ieee.numeric_std.all;
 --! - Bit 1: ready to send data (transmit buffer empty)
 entity pp_soc_uart is
 	generic(
-		FIFO_DEPTH : natural := 64 --! Depth of the input and output FIFOs.
+		FIFO_DEPTH : natural := 512 --! Depth of the input and output FIFOs.
 	);
 	port(
 		clk : in std_logic;
@@ -275,34 +275,28 @@ begin
 
 	---------- Data Buffers ----------
 
-	send_buffer: entity work.pp_fifo
-		generic map(
-			DEPTH => FIFO_DEPTH,
-			WIDTH => 8
-		) port map(
+	send_buffer: entity work.pp_fifo_al
+		port map(
 			clk => clk,
-			reset => reset,
-			full => send_buffer_full,
-			empty => send_buffer_empty,
-			data_in => send_buffer_input,
-			data_out => send_buffer_output,
-			push => send_buffer_push,
-			pop => send_buffer_pop
+			rst => reset,
+			full_flag => send_buffer_full,
+			empty_flag => send_buffer_empty,
+			di => send_buffer_input,
+			do => send_buffer_output,
+			we => send_buffer_push,
+			re => send_buffer_pop
 		);
 
-	recv_buffer: entity work.pp_fifo
-		generic map(
-			DEPTH => FIFO_DEPTH,
-			WIDTH => 8
-		) port map(
+	recv_buffer: entity work.pp_fifo_al
+		port map(
 			clk => clk,
-			reset => reset,
-			full => recv_buffer_full,
-			empty => recv_buffer_empty,
-			data_in => recv_buffer_input,
-			data_out => recv_buffer_output,
-			push => recv_buffer_push,
-			pop => recv_buffer_pop
+			rst => reset,
+			full_flag => recv_buffer_full,
+			empty_flag => recv_buffer_empty,
+			di => recv_buffer_input,
+			do => recv_buffer_output,
+			we => recv_buffer_push,
+			re => recv_buffer_pop
 		);
 
 	---------- Wishbone Interface ---------- 

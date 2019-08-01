@@ -1,0 +1,25 @@
+set_pin_assignment {clk} { LOCATION = K14; }				##24MHZ
+set_pin_assignment {reset_n} { LOCATION = K16; }			##USER_KEY
+
+
+## RGB LEDs, 3 pins
+set_pin_assignment {gpio_pins[11]} { LOCATION = R3;  }	##LED_R, R3
+set_pin_assignment {gpio_pins[10]} { LOCATION = J14;  }	##LED_G, J14
+set_pin_assignment {gpio_pins[9]}  { LOCATION = P13;  }	##LED_B, P13
+set_pin_assignment {gpio_pins[8]}  { LOCATION = A4;  }
+
+set_pin_assignment {gpio_pins[7]}  { LOCATION = A3;  }
+set_pin_assignment {gpio_pins[6]}  { LOCATION = C5;  }
+set_pin_assignment {gpio_pins[5]}  { LOCATION = B6;  }
+set_pin_assignment {gpio_pins[4]}  { LOCATION = C9;  }
+
+set_pin_assignment {gpio_pins[3]}  { LOCATION = B10; }			##USER_KEY
+set_pin_assignment {gpio_pins[2]}  { LOCATION = B14;  }
+set_pin_assignment {gpio_pins[1]}  { LOCATION = A14;  }
+set_pin_assignment {gpio_pins[0]}  { LOCATION = B15;  }
+
+## UARTS
+set_pin_assignment {uart0_txd} { LOCATION = H13;  }
+set_pin_assignment {uart0_rxd} { LOCATION = J13;  }
+set_pin_assignment {uart1_txd} { LOCATION = M13;  }
+set_pin_assignment {uart1_rxd} { LOCATION = L13;  }
