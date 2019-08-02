@@ -60,7 +60,7 @@
         <EG4X/>
     </Device_Settings>
     <Project_Settings>
-        <Step_Last_Change>2019-08-01 23:32:11</Step_Last_Change>
+        <Step_Last_Change>2019-08-02 09:39:25</Step_Last_Change>
         <Current_Step>10</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
